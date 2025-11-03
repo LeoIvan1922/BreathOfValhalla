@@ -152,7 +152,7 @@ const Index = () => {
 
             <div className="text-center">
               <Button variant="default" size="lg">
-                Переглянути всі лотереї
+                Переглянути всі розіграші
                 <Star className="w-4 h-4 ml-2" />
               </Button>
             </div>
