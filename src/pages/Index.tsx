@@ -104,13 +104,13 @@ const Index = () => {
             <div className="text-center mb-12">
               <Badge className="mb-4 gradient-primary text-lg px-6 py-3">
                 <Trophy className="w-6 h-6 mr-3" />
-                Активні лотереї
+                Активні розіграші
               </Badge>
               <h2 className="text-3xl md:text-4xl font-bold mb-4">
                 Гарячі <span className="gradient-gold bg-clip-text text-transparent">розіграші</span>
               </h2>
               <p className="text-muted-foreground max-w-2xl mx-auto">
-                Не пропустіть можливість виграти неймовірні призи у наших найпопулярніших лотереях
+                Не пропустіть можливість виграти неймовірні призи у наших найпопулярніших розіграшах
               </p>
             </div>
 
