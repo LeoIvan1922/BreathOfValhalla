@@ -16,7 +16,7 @@ export function CategoryCard({ icon: Icon, title, count, gradient = "gradient-pr
           <Icon className="w-8 h-8 text-white" />
         </div>
         <h3 className="font-semibold text-lg mb-2 text-balance">{title}</h3>
-        <p className="text-muted-foreground text-sm">{count} лотерей</p>
+        <p className="text-muted-foreground text-sm">{count} розіграшів</p>
       </CardContent>
     </Card>
   );
