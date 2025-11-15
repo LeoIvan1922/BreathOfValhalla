@@ -32,7 +32,7 @@ export const categoryService = {
       .from('categories')
       .select('*')
       .eq('id', id)
-      .single();
+      .maybeSingle();
     
     if (error) throw error;
     return data;
@@ -86,7 +86,7 @@ export const lotteryService = {
         )
       `)
       .eq('id', id)
-      .single();
+      .maybeSingle();
     
     if (error) throw error;
     return data;
@@ -123,7 +123,7 @@ export const userProfileService = {
       .from('user_profiles')
       .select('*')
       .eq('id', user.id)
-      .single();
+      .maybeSingle();
     
     if (error && error.code !== 'PGRST116') throw error;
     return data;
@@ -138,7 +138,7 @@ export const userProfileService = {
       .update(updates)
       .eq('id', user.id)
       .select()
-      .single();
+      .maybeSingle();
     
     if (error) throw error;
     return data;
@@ -153,7 +153,7 @@ export const userProfileService = {
       .update({ wallet_balance: amount })
       .eq('id', user.id)
       .select()
-      .single();
+      .maybeSingle();
     
     if (error) throw error;
     return data;
@@ -198,7 +198,7 @@ export const ticketService = {
         purchase_price: price
       })
       .select()
-      .single();
+      .maybeSingle();
     
     if (error) throw error;
     return data;
