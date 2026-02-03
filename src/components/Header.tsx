@@ -10,9 +10,11 @@ export function Header() {
   const { user, profile, signOut, isAuthenticated } = useAuth();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [authModalOpen, setAuthModalOpen] = useState(false);
+  const [isSigningOut, setIsSigningOut] = useState(false);
 
   const handleSignOut = async () => {
     try {
+      setIsSigningOut(true);
       setIsMenuOpen(false); // Закриваємо мобільне меню
       await signOut();
       toast({
@@ -26,6 +28,8 @@ export function Header() {
         description: error?.message || 'Не вдалося вийти з системи',
         variant: 'destructive'
       });
+    } finally {
+      setIsSigningOut(false);
     }
   };
 
@@ -82,14 +86,14 @@ export function Header() {
                   <User className="w-4 h-4" />
                   <span className="max-w-32 truncate">{profile?.full_name || user?.email}</span>
                 </div>
-                <Button 
-                  variant="outline" 
-                  size="sm" 
+                <Button
+                  variant="outline"
+                  size="sm"
                   onClick={handleSignOut}
-                  disabled={loading}
+                  disabled={isSigningOut}
                 >
                   <LogOut className="w-4 h-4 mr-1" />
-                  {loading ? 'Вихід...' : 'Вийти'}
+                  {isSigningOut ? 'Вихід...' : 'Вийти'}
                 </Button>
               </div>
             ) : (
