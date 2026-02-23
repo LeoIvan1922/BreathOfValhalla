@@ -7,6 +7,7 @@ export type Lottery = Database['public']['Tables']['lotteries']['Row'];
 export type UserProfile = Database['public']['Tables']['user_profiles']['Row'];
 export type Ticket = Database['public']['Tables']['tickets']['Row'];
 export type Winner = Database['public']['Tables']['winners']['Row'];
+export type Product = Database['public']['Tables']['products']['Row'];
 
 // Типи для вставки даних
 export type CategoryInsert = Database['public']['Tables']['categories']['Insert'];
@@ -251,6 +252,41 @@ export const winnerService = {
       .eq('user_id', user.id)
       .order('won_at', { ascending: false });
     
+    if (error) throw error;
+    return data;
+  }
+};
+
+// Функції для роботи з продуктами
+export const productService = {
+  async getByCategory(categoryId: string) {
+    const { data, error } = await supabase
+      .from('products')
+      .select('*')
+      .eq('category_id', categoryId)
+      .order('name');
+
+    if (error) throw error;
+    return data;
+  },
+
+  async getById(id: string) {
+    const { data, error } = await supabase
+      .from('products')
+      .select('*')
+      .eq('id', id)
+      .maybeSingle();
+
+    if (error) throw error;
+    return data;
+  },
+
+  async getAll() {
+    const { data, error } = await supabase
+      .from('products')
+      .select('*')
+      .order('name');
+
     if (error) throw error;
     return data;
   }

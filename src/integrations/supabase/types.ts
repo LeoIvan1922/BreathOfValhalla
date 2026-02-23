@@ -103,6 +103,56 @@ export type Database = {
           }
         ]
       }
+      products: {
+        Row: {
+          id: string
+          category_id: string
+          name: string
+          description: string
+          image_url: string
+          price: number
+          rating: number | null
+          reviews_count: number | null
+          in_stock: boolean
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          category_id: string
+          name: string
+          description: string
+          image_url: string
+          price?: number
+          rating?: number | null
+          reviews_count?: number | null
+          in_stock?: boolean
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          category_id?: string
+          name?: string
+          description?: string
+          image_url?: string
+          price?: number
+          rating?: number | null
+          reviews_count?: number | null
+          in_stock?: boolean
+          created_at?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "products_category_id_fkey"
+            columns: ["category_id"]
+            isOneToOne: false
+            referencedRelation: "categories"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
       tickets: {
         Row: {
           id: string

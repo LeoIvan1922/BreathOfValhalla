@@ -82,10 +82,11 @@ const Index = () => {
                 ) : (
                   categories.map((category, index) => (
                   <CarouselItem key={index} className="md:basis-1/3 lg:basis-1/4 px-2">
-                    <CategoryCard 
+                    <CategoryCard
+                      id={category.id}
                       icon={getIconComponent(category.icon)}
                       title={category.name}
-                      count={0} // TODO: Додати підрахунок лотерей по категорії
+                      count={0}
                       gradient={category.gradient || 'gradient-primary'}
                     />
                   </CarouselItem>
